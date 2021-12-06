@@ -107,6 +107,29 @@ function Progress() {
     this.updatePoints(0)
 }
 
+function overlapped(elementA, elementB) {
+    const a = elementA.getBoundingClientReact()
+    const b = elementB.getBoundingClientReact()
+
+    const horizontal = a.left + a.width >= b.left
+        && b.left + b.width >= a.left
+    const vertical = a.top + a.height >= b.top
+        && b.top + b.height >= a.top
+        return horizontal && vertical
+}
+
+function collided(bird, barriers) {
+    let collided = false
+    barriers.pair.forEach(pairOfBarriers => {
+        if (!collided) {
+            const higher = pairOfBarriers.higher.element
+            const bottom = pairOfBarriers.bottom.element
+            collided = overlapped(bird.element, higher) || overlapped(bird.element, bottom) 
+        }
+    })
+    return collided
+}
+
 function FlappyBird() {
     let points = 0
 
@@ -127,6 +150,10 @@ function FlappyBird() {
         const timer = setInterval(() => {
             barriers.animation()
             bird.animation()
+
+            if(collided(bird, barriers)) {
+                clearInterval(timer)
+            }
         }, 20);
     }
 }
