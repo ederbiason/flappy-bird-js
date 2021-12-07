@@ -121,7 +121,7 @@ function overlapped(elementA, elementB) {
 
 function collided(bird, barriers) {
     let collided = false
-    barriers.pair.forEach(pairOfBarriers => {
+    barriers.pairs.forEach(pairOfBarriers => {
         if (!collided) {
             const higher = pairOfBarriers.higher.element
             const bottom = pairOfBarriers.bottom.element
