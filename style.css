@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: Pixel;
 }
 
 @font-face {
@@ -57,7 +58,26 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    font-family: Pixel;
     font-size: 70px;
     z-index: 99;
+}
+
+.button {
+    background: linear-gradient(90deg, #639301, #A5E82E);
+    border: 2px solid rgba(0, 0, 0, 0.61);
+    padding: 5px 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 25px;
+    font-weight: bold; 
+    position: absolute;
+    left: 50%;
+    z-index: 100;
+    display: none;
+}
+
+.button:hover {
+    border: 2px solid rgb(0, 0, 0);
+    transform: scale(1.1);
 }

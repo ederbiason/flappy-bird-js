@@ -152,12 +152,18 @@ function FlappyBird() {
         const timer = setInterval(() => {
             barriers.animation()
             bird.animation()
+            let btn = document.getElementById('button');
 
             if(collided(bird, barriers)) {
                 clearInterval(timer)
+                btn.style.display = 'block';
             }
         }, 20);
     }
 }
 
 new FlappyBird().start()
+
+function gameRestart() {
+    console.log('resetou')
+}
