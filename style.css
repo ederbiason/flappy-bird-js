@@ -7,7 +7,7 @@
     src: url('assets/fonts/Pixel.ttf')
 }
 
-.wm-flappy {
+[wm-flappy] {
     position: relative;
     border: 5px solid dodgerblue;
     height: 700px;

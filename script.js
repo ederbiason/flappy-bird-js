@@ -51,21 +51,21 @@ function Barriers(height, width, opening, space, notifyPoint) {
     this.animation = () => {
         this.pairs.forEach(pair => {
             pair.setX(pair.getX() - displacement)
+
+            // when the element leaves of the screen game
+            if (pair.getX() < -pair.getWidth()) {
+                pair.setX(pair.getX() + space * this.pairs.length)
+                pair.drawOpening()
+            }
+
+            const mid = width / 2
+            const crossMid = pair.getX() + displacement >= mid 
+                && pair.getX() < mid
+
+            if (crossMid) {
+                notifyPoint()
+            }
         })
-
-        // when the element leaves of the screen game
-        if (pair.getX() < -pair.getWidth()) {
-            pair.setX(pair.getX() + space * this.pairs.length)
-            pair.drawOpening()
-        }
-
-        const mid = width / 2
-        const crossMid = pair.getX() + displacement >= mid 
-            && pair.getX() < mid
-
-        if (crossMid) {
-            notifyPoint()
-        }
     }
 }
 
@@ -108,14 +108,15 @@ function Progress() {
 }
 
 function overlapped(elementA, elementB) {
-    const a = elementA.getBoundingClientReact()
-    const b = elementB.getBoundingClientReact()
+    const a = elementA.getBoundingClientRect()
+    const b = elementB.getBoundingClientRect()
 
     const horizontal = a.left + a.width >= b.left
         && b.left + b.width >= a.left
     const vertical = a.top + a.height >= b.top
         && b.top + b.height >= a.top
-        return horizontal && vertical
+    
+    return horizontal && vertical
 }
 
 function collided(bird, barriers) {
@@ -124,7 +125,8 @@ function collided(bird, barriers) {
         if (!collided) {
             const higher = pairOfBarriers.higher.element
             const bottom = pairOfBarriers.bottom.element
-            collided = overlapped(bird.element, higher) || overlapped(bird.element, bottom) 
+            collided = overlapped(bird.element, higher) 
+                || overlapped(bird.element, bottom) 
         }
     })
     return collided
@@ -133,11 +135,11 @@ function collided(bird, barriers) {
 function FlappyBird() {
     let points = 0
 
-    const gameArea = document.querySelector('.wm-flappy')
+    const gameArea = document.querySelector('[wm-flappy]')
     const height = gameArea.clientHeight
     const width = gameArea.clientWidth
 
-    const progress = new Progress
+    const progress = new Progress()
     const barriers = new Barriers(height, width, 200, 400, () => progress.updatePoints(++points))
     const bird = new Bird(height)
 
