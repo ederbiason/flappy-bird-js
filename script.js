@@ -157,6 +157,7 @@ function FlappyBird() {
             if(collided(bird, barriers)) {
                 clearInterval(timer)
                 btn.style.display = 'block';
+                gameOverDisplay()
             }
         }, 20);
     }
@@ -165,5 +166,15 @@ function FlappyBird() {
 new FlappyBird().start()
 
 function gameRestart() {
-    console.log('resetou')
+    setTimeout(() => {
+        window.location.reload()
+    }, 0)
 }
+
+// function gameOverDisplay (gameArea) {
+//     const element = newElement ('p', 'game-over-display')
+
+//     element.innerHTML = url(assets/img/gameover.png)
+
+//     gameArea.appendChild(element)
+// }
