@@ -153,10 +153,12 @@ function FlappyBird() {
             barriers.animation()
             bird.animation()
             let btn = document.getElementById('button');
+            let img = document.getElementById('game-over');
 
             if(collided(bird, barriers)) {
                 clearInterval(timer)
                 btn.style.display = 'block';
+                img.style.display = 'block';
                 gameOverDisplay()
             }
         }, 20);
@@ -171,10 +173,3 @@ function gameRestart() {
     }, 0)
 }
 
-// function gameOverDisplay (gameArea) {
-//     const element = newElement ('p', 'game-over-display')
-
-//     element.innerHTML = url(assets/img/gameover.png)
-
-//     gameArea.appendChild(element)
-// }
