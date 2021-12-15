@@ -15,7 +15,7 @@
 </p>
 
 ## :bulb: Motivation
-<p>I decided to develop Flappy Bird because I like games, and let's face it, who never got angry playing Flappy Bird? It's a famous game that is possible to develop in Javascript, so I tried. You just need hold and click any key of your keyboard and pass  through the holes that the random barriers create, your points is in the top right cornerand and if you hit in somewhere  you lose. This project helped me to learn more about the functions() and the use of "this" on JavaScript, so if you have idea of any game that is possible to develop in JS, send me the name, maybe we can't develop it together. </p>
+<p>I decided to develop Flappy Bird because I like games, and let's face it, who never got angry playing Flappy Bird? It's a famous game that is possible to develop in Javascript, so I tried. You just need hold and click any key of your keyboard and pass  through the holes that the random barriers create, your points is in the top right cornerand and if you hit in somewhere  you lose. This project helped me to learn more about the functions() and the use of "this" on JavaScript, so if you have idea of any game that is possible to develop in JS, send me the name, maybe we can develop it together. </p>
 
 ## :man_technologist: Technologies used
 
